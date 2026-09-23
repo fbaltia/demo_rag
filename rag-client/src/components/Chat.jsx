@@ -42,7 +42,14 @@ function Chat() {
           rows="4"
         />
         <button type="submit" disabled={!question.trim() || loading}>
-          {loading ? 'Recherche...' : 'Envoyer la question'}
+          {loading ? (
+            <span className="loading-state">
+              <span className="spinner" aria-hidden="true" />
+              Recherche...
+            </span>
+          ) : (
+            'Envoyer la question'
+          )}
         </button>
       </form>
       {error && <p className="error" role="alert">{error}</p>}
