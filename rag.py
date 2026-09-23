@@ -5,7 +5,6 @@ import ollama
 from chromadb import PersistentClient
 from sentence_transformers import SentenceTransformer
 
-
 transformer = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 db = PersistentClient(path="./chromadb")
 
@@ -36,10 +35,8 @@ def ask_llm(question: str, resultats: dict) -> str:
     ]
     contexte = "\n\n".join(chunks)
     prompt = f"""Tu réponds uniquement à partir des informations suivantes.
-
 Contexte :
 {contexte}
-
 Question :
 {question}
 """
