@@ -8,7 +8,7 @@ def main() -> None:
     sliced_pdf = slice_pdf("./pdf/PythonBases.pdf")
     if train_model:
         train(sliced_pdf)
-    question = "quels sont les opérateurs de comparaison ?"
+    question = "quelles sont les boucles  ?"
     result = search(question, number_of_answers)
     reponse = ask_llm(question, result)
     print(reponse)

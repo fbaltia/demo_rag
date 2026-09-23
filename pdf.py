@@ -1,8 +1,6 @@
 from pypdf import PdfReader
 
-def slice_pdf(path:str)->list[str]:
-    chunk_size = 500
-    overlap = 100
+def slice_pdf(path:str, chunk_size = 500, overlap = 100)->list[str]:
 
     list_pdf_text = []
     reader = PdfReader(path)
