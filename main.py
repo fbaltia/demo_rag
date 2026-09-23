@@ -1,8 +1,11 @@
+from fastapi import FastAPI
+
 from rag import ask_llm, search, train
 from pdf import slice_pdf
 
 train_model = False
 number_of_answers = 2
+app = FastAPI()
 
 def main() -> None:
     sliced_pdf = slice_pdf("./pdf/PythonBases.pdf")
