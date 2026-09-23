@@ -1,0 +1,19 @@
+from rag import ask_llm, search, train
+from pdf import slice_pdf
+
+train_model = False
+number_of_answers = 2
+
+def main() -> None:
+    sliced_pdf = slice_pdf("./pdf/PythonBases.pdf")
+    if train_model:
+        train(sliced_pdf)
+    question = "quels sont les opérateurs de comparaison ?"
+    result = search(question, number_of_answers)
+    reponse = ask_llm(question, result)
+    print(reponse)
+
+
+if __name__ == "__main__":
+    main()
+
