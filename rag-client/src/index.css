@@ -1,14 +1,14 @@
 :root {
-  --paper: #fffaf4;
-  --cream: #f7efe5;
-  --ink: #242220;
-  --muted: #766f68;
-  --line: #dfd4c8;
-  --orange: #c95b30;
-  --green: #387e5b;
+  --paper: #fff8fb;
+  --cream: #fcecf3;
+  --ink: #351c2b;
+  --muted: #806372;
+  --line: #e8cbd8;
+  --orange: #c33d77;
+  --green: #8f315f;
   font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
   color: var(--ink);
-  background: #eee4d8;
+  background: #f1dce7;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,9 +23,9 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    linear-gradient(rgba(255, 250, 244, 0.72), rgba(255, 250, 244, 0.72)),
-    repeating-linear-gradient(0deg, transparent 0 31px, rgba(95, 76, 57, 0.05) 32px),
-    #eee4d8;
+    linear-gradient(rgba(255, 248, 251, 0.76), rgba(255, 248, 251, 0.76)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(150, 65, 105, 0.05) 32px),
+    #f1dce7;
 }
 
 button,

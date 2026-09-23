@@ -60,7 +60,7 @@ h1 {
   height: 8px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 0 4px rgba(56, 126, 91, 0.12);
+  box-shadow: 0 0 0 4px rgba(143, 49, 95, 0.12);
   content: '';
 }
 
@@ -146,7 +146,7 @@ textarea {
 textarea:focus,
 input[type='file']:focus {
   border-color: var(--orange);
-  outline: 2px solid rgba(201, 91, 48, 0.18);
+  outline: 2px solid rgba(195, 61, 119, 0.18);
   outline-offset: 2px;
 }
 
@@ -156,7 +156,7 @@ button {
   border-radius: 2px;
   padding: 12px 17px;
   background: var(--ink);
-  color: #fffaf4;
+  color: #fff8fb;
   cursor: pointer;
   font: inherit;
   font-size: 13px;
@@ -206,7 +206,7 @@ button:disabled {
 }
 
 .error {
-  color: #ad352c;
+  color: #a12f58;
 }
 
 .answer-panel,
@@ -229,6 +229,31 @@ button:disabled {
   gap: 10px;
   margin: 15px 0 0;
   padding-left: 22px;
+}
+
+.source-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+}
+
+.source-toggle:hover:not(:disabled) {
+  background: transparent;
+  color: var(--orange);
+  transform: none;
+}
+
+.chevron {
+  margin-left: auto;
+  color: var(--orange);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .sources-panel li {
