@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from rag import ask_llm, search, train
 from pdf import slice_pdf
@@ -8,6 +9,12 @@ from routes.upload import router as upload_router
 train_model = False
 number_of_answers = 2
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(ask_router)
 app.include_router(upload_router)
 
