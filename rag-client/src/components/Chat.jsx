@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../api'
 import Message from './Message'
 import SourceList from './SourceList'
 
-function Chat() {
+function Chat({ conversationId, messages, onMessagesChange }) {
   const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState('')
   const [sources, setSources] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    setSources([])
+    setError('')
+  }, [conversationId])
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -16,13 +20,21 @@ function Chat() {
 
     setLoading(true)
     setError('')
-    setAnswer('')
     setSources([])
 
     try {
-      const response = await api.post('/ask', { question: question.trim() })
-      setAnswer(response.data.answer)
+      const trimmedQuestion = question.trim()
+      const response = await api.post('/ask', {
+        question: trimmedQuestion,
+        conversation_id: conversationId,
+      })
+      onMessagesChange([
+        ...messages,
+        { role: 'user', content: trimmedQuestion },
+        { role: 'assistant', content: response.data.answer },
+      ], response.data.conversation_id)
       setSources(response.data.sources || [])
+      setQuestion('')
     } catch (requestError) {
       setError(requestError.response?.data?.detail || 'La question a echoue.')
     } finally {
@@ -53,7 +65,11 @@ function Chat() {
         </button>
       </form>
       {error && <p className="error" role="alert">{error}</p>}
-      <Message answer={answer} />
+      <section className="messages-panel" aria-live="polite">
+        {messages.map((message, index) => (
+          <Message key={message.id || `${message.role}-${index}`} message={message} />
+        ))}
+      </section>
       <SourceList sources={sources} />
     </>
   )

@@ -1,11 +1,18 @@
-function Message({ answer }) {
-  if (!answer) return null
+import { useConversation } from '../context/ConversationContext'
+
+function Message({ message }) {
+  if (!message) return null
+
+  const conversation = useConversation()
 
   return (
-    <section className="answer-panel" aria-live="polite">
-      <span className="eyebrow">Reponse</span>
-      <p>{answer}</p>
-    </section>
+    <article className={`message message-${message.role}`}>
+      <span className="conversation-meta">
+        Conversation #{conversation.id ?? '-'} · {conversation.title}
+      </span>
+      <span className="eyebrow">{message.role === 'user' ? 'Vous' : 'Assistant'}</span>
+      <p>{message.content}</p>
+    </article>
   )
 }
 
